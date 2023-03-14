@@ -6,6 +6,7 @@ Atividade de estudo focada em chatGPT. - Ícaro Botelho e Gustavo Martins
   A programação orientada a objetos é um paradigma de programação que se baseia na ideia de organizar o código em torno de objetos, que representam entidades do mundo real ou conceitual. Cada objeto possui um conjunto de atributos e métodos que definem seu comportamento e interações com outros objetos. A POO permite reutilização de código, encapsulamento de dados e abstração de complexidade, tornando o desenvolvimento de software mais modular, flexível e fácil de manter. Exemplos de linguagens que suportam POO são Java, C++, Python e Ruby.
 
 ### 2. Quais são os pilares da programação orientada a objetos?
+
   A programação orientada a objetos (POO) é baseada em quatro pilares: encapsulamento, herança, polimorfismo e abstração. O encapsulamento é a técnica de esconder a complexidade interna de um objeto e expor apenas as interfaces necessárias para interagir com ele. 
   A herança permite que um objeto herde propriedades e comportamentos de uma classe pai, o que ajuda a reutilizar código e criar hierarquias de classes. O polimorfismo permite que objetos de diferentes classes possam responder de maneira diferente a uma mesma mensagem, tornando o código mais flexível e adaptável. Por fim, a abstração é o processo de identificar as características essenciais de um objeto e criar uma representação simplificada delas na forma de uma classe. Juntos, esses pilares permitem que a POO seja uma abordagem eficiente e organizada para desenvolver programas complexos e escaláveis.
 
@@ -56,10 +57,6 @@ A classe PaymentTypeSelector é responsável por selecionar o tipo de pagamento 
 
   A classe PaymentTypeSelector é responsável por permitir que o usuário selecione uma forma de pagamento entre as opções disponíveis (Pix, Crédito ou Boleto) e criar uma instância correspondente da interface PaymentType. As classes PixPayment, CreditPayment e BoletoPayment implementam a interface PaymentType e fornecem uma implementação personalizada dos métodos getName() e isValid() para representar cada forma de pagamento. Por exemplo, se o usuário selecionar a opção "1" para Pix na classe PaymentTypeSelector, a instância retornada será da classe PixPayment, que implementa a interface PaymentType e fornece uma implementação personalizada para os métodos getName() e isValid().
 
-### 12. Qual é a relação entre a classe PaymentTypeSelector e as classes PixPayment, CreditPayment e BoletoPayment?
-
-  A classe PaymentTypeSelector é responsável por permitir que o usuário selecione uma forma de pagamento entre as opções disponíveis (Pix, Crédito ou Boleto) e criar uma instância correspondente da interface PaymentType. As classes PixPayment, CreditPayment e BoletoPayment implementam a interface PaymentType e fornecem uma implementação personalizada dos métodos getName() e isValid() para representar cada forma de pagamento. Por exemplo, se o usuário selecionar a opção "1" para Pix na classe PaymentTypeSelector, a instância retornada será da classe PixPayment, que implementa a interface PaymentType e fornece uma implementação personalizada para os métodos getName() e isValid().
-
 ### 13. O que é polimorfismo e como ele é utilizado no programa?
 
   Polimorfismo é um conceito da programação orientada a objetos que permite que um objeto possa ser tratado de diferentes formas, ou seja, uma referência de um tipo pode ser utilizada para referenciar objetos de diferentes tipos que são subtipos desse tipo. No programa apresentado, o polimorfismo é utilizado na classe PaymentTypeSelector, que retorna um objeto do tipo PaymentType, mas esse objeto pode ser uma instância de qualquer uma das classes PixPayment, CreditPayment, BoletoPayment ou InvalidPayment. 
@@ -81,7 +78,12 @@ No método main(), o método getName() é chamado no objeto de tipo de pagamento
   No método selectPaymentType da classe PaymentTypeSelector, a exceção que pode ser lançada é a InputMismatchException, que ocorre quando o valor digitado pelo usuário não é um número inteiro válido. Essa exceção é lançada pelo método scanner.nextInt() quando o valor digitado não pode ser convertido para um inteiro.
   Para tratar essa exceção, o método selectPaymentType utiliza um bloco try-catch, que tenta executar o código dentro do bloco try e captura a exceção caso ela seja lançada. Se a exceção for capturada, o método exibe uma mensagem de erro e retorna um objeto InvalidPayment, indicando que a opção selecionada é inválida.
 
-###18. Qual é a importância de utilizar interfaces no desenvolvimento de sistemas orientados a objetos?
+### 17. Como seria possível adicionar um novo tipo de pagamento ao programa?
+
+  Para adicionar um novo tipo de pagamento ao programa, seria necessário criar uma nova classe que implemente a interface PaymentType e implementar os métodos da interface, getName() e isValid(). Em seguida, seria necessário adicionar a opção correspondente ao novo tipo de pagamento no método selectPaymentType() da classe PaymentTypeSelector.
+  Por exemplo, para adicionar um novo tipo de pagamento chamado "Débito", seria necessário criar uma nova classe chamada DebitPayment que implemente a interface PaymentType e defina seus próprios valores para getName() e isValid(). Em seguida, seria necessário adicionar a opção correspondente ao novo tipo de pagamento no método selectPaymentType() da classe PaymentTypeSelector. Isso pode ser feito adicionando uma nova linha com a opção e a criação de uma instância da classe DebitPayment. Assim, o programa agora suporta um novo tipo de pagamento, que pode ser selecionado pelo usuário.
+
+### 18. Qual é a importância de utilizar interfaces no desenvolvimento de sistemas orientados a objetos?
 
   Interfaces são importantes no desenvolvimento de sistemas orientados a objetos porque elas permitem a definição de um contrato ou um conjunto de ações que uma classe deve implementar, sem especificar como essas ações devem ser realizadas. Isso promove uma maior flexibilidade e modularidade do código, permitindo que diferentes implementações possam ser criadas sem afetar o funcionamento do sistema. Além disso, o uso de interfaces também facilita a criação de testes unitários e a manutenção do código.
   Um exemplo de uso de interface seria na criação de uma interface **`Animal`**, que poderia definir métodos como **`andar()`**, **`dormir()`**, **`comer()`**, entre outros. Dessa forma, qualquer classe que implemente essa interface deverá obrigatoriamente implementar esses métodos. Por exemplo, uma classe **`Cachorro`** poderia implementar a interface **`Animal`** e, assim, teria que implementar todos os métodos definidos na interface. Isso permite que o sistema possa trabalhar com diferentes tipos de animais sem precisar conhecer a implementação específica de cada um deles.
@@ -106,7 +108,12 @@ No método main(), o método getName() é chamado no objeto de tipo de pagamento
   A classe Main é a classe principal de um programa em Java. É nela que o método main é definido e onde o programa começa sua execução. A finalidade da classe Main é fornecer um ponto de entrada para o programa e coordenar a execução das outras classes e métodos do programa.
   No código fornecido como exemplo, a classe Main é responsável por criar as instâncias das outras classes, como InputReader e PaymentTypeSelector, e chamar seus métodos para realizar a leitura de dados do usuário e selecionar o tipo de pagamento. Além disso, a classe Main imprime mensagens para o usuário na saída padrão.
 
-###24. Como é possível proteger o programa contra erros de entrada do usuário?
+### 23. O que é um construtor padrão e quando ele é utilizado?
+
+Um construtor padrão é um método especial que é chamado automaticamente ao criar um objeto em uma classe. Ele não possui nenhum parâmetro e geralmente é utilizado para inicializar valores padrão aos atributos da classe. Se nenhum construtor for definido na classe, o construtor padrão é criado automaticamente pelo compilador.
+No exemplo acima, a classe Pessoa tem um construtor padrão que define o nome como "Sem nome" e a idade como 0. Quando um objeto Pessoa é criado sem especificar um nome ou idade, o construtor padrão é chamado automaticamente e atribui esses valores padrão.
+
+### 24. Como é possível proteger o programa contra erros de entrada do usuário?
 
   Uma forma de proteger o programa contra erros de entrada do usuário é através da validação de entrada de dados. Isso pode ser feito por meio de verificações de tipo de dados, faixa de valores aceitáveis, entre outras. É importante garantir que o programa informe ao usuário quando uma entrada inválida for detectada e solicite uma nova entrada.
   Por exemplo, no código apresentado, se o usuário inserir um valor não numérico ao ser solicitado para digitar um número, um erro será gerado. Para proteger o programa contra esse erro, podemos usar a classe Scanner para verificar se o valor inserido é realmente um número, e se não for, informar o usuário do erro e solicitar uma nova entrada. Isso pode ser feito adicionando uma verificação condicional após o comando "scanner.hasNextDouble()". Se o valor inserido não for um número, podemos informar o usuário do erro e solicitar uma nova entrada.
@@ -125,4 +132,3 @@ No método main(), o método getName() é chamado no objeto de tipo de pagamento
   
   A sobrecarga de métodos permite ter dois ou mais métodos com o mesmo nome, mas que diferem nos parâmetros recebidos. No programa apresentado, não há exemplo de sobrecarga de métodos, pois não há dois métodos com o mesmo nome. 
   Um exemplo de sobrecarga de métodos poderia ser a criação de dois métodos chamados "readDouble", mas que recebem diferentes parâmetros. Por exemplo, um método poderia receber como parâmetro apenas uma mensagem de prompt, enquanto outro poderia receber tanto uma mensagem de prompt quanto um valor mínimo e um valor máximo permitidos. Dessa forma, seria possível chamar o método mais apropriado de acordo com a situação em que ele é necessário.
-  
